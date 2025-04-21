@@ -3,6 +3,8 @@
         {
             "name": "macos-clang-arm64",
             "includePath": [
+                "/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1",
+                "/usr/local/include",
                 "${workspaceFolder}/**"
             ],
             "compilerPath": "/opt/homebrew/bin/g++-14",
