@@ -3,8 +3,9 @@
 #SBATCH --exclusive
 
 module load gcc
+module load gprof
 
-g++ -pg -o3 number_crunching number_crunching.cpp
+g++ -pg -o number_crunching number_crunching.cpp
 
 mkdir -p gprof_results
 for k in {1..2};
@@ -15,5 +16,11 @@ do
     gprof number_crunching gmon.out > gprof_results/gprof_results_k${k}.txt
 done
 # the largest input data set
-cp gprof_results/gprof_results_k10.txt number_crunching_gprof.out
+# cp gprof_results/gprof_results_k10.txt number_crunching_gprof.out
 
+echo "N,Time(s)" > execution_times.csv
+for k in {1..2}; do
+    N=$((k * 10000))
+    time=$(grep "main" gprof_results/gprof_results_k${k}.txt | awk '{print $6}')
+    echo "$N,$time" >> execution_times.csv
+done
