@@ -1,9 +1,10 @@
 #!/bin/bash
-#SBATCH -p shared
+#SBATCH -p test
+#SBATCH --exclusive
 
 module load gcc
 
-g++ -pg -o number_crunching number_crunching.cpp
+g++ -pg -o3 number_crunching number_crunching.cpp
 
 mkdir -p gprof_results
 for k in {1..2};
