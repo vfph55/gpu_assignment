@@ -22,13 +22,11 @@ double *function_c(const double *A, const double *x, const int N) {
   for (unsigned int i = 0; i < N; i++) {
     y[i] = 0;
   }
-  LIKWID_MARKER_START("function_c");
   for (unsigned int i = 0; i < N; i++) {
     for (unsigned int j = 0; j < N; j++) {
       y[i] += A[i * N + j] * x[i];
     }
   }
-  LIKWID_MARKER_STOP("function_c"); 
   return y;
 }
 
@@ -86,6 +84,7 @@ void print_results(const double s, const double *x, const double *y,
 }
 
 int main(int argc, char **argv) {
+  LIKWID_MARKER_INIT;
   int N;
 
   if (argc == 2) {
@@ -96,7 +95,7 @@ int main(int argc, char **argv) {
               << std::endl;
     exit(0);
   }
-  LIKWID_MARKER_INIT;
+
   double *u = new double[N];
   double *v = new double[N];
   double *A = new double[N * N];
@@ -105,7 +104,11 @@ int main(int argc, char **argv) {
 
   double s = function_a(u, v, N);
   double *x = function_b(u, v, N);
+
+  LIKWID_MARKER_START("function_c");
   double *y = function_c(A, x, N);
+  LIKWID_MARKER_STOP("function_c");
+
   double *z = function_d(s, x, y, N);
 
   print_results(s, x, y, z, A, N);
@@ -116,7 +119,6 @@ int main(int argc, char **argv) {
   delete[] x;
   delete[] y;
   delete[] z;
-  
   LIKWID_MARKER_CLOSE;
   EXIT_SUCCESS;
 }
