@@ -6,7 +6,7 @@ module load gcc
 g++ -pg -o number_crunching number_crunching.cpp
 
 mkdir -p gprof_results
-for k in {1..10};
+for k in {1..5};
 do
     N=$((k * 10000))
     echo "Running for N = $N"
