@@ -1,3 +1,5 @@
 #!/bin/bash
 #SBATCH -p test
-./number_crunching.cpp
+module load gcc
+g++ number_crunching.cpp -o number_crunching
+./number_crunching
