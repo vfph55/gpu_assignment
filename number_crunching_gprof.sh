@@ -1,6 +1,5 @@
 #!/bin/bash
-#SBATCH -p test
-#SBATCH --exclusive
+#SBATCH -p shared
 
 module load gcc
 
