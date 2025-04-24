@@ -84,9 +84,7 @@ void print_results(const double s, const double *x, const double *y,
 }
 
 int main(int argc, char **argv) {
-  LIKWID_MARKER_INIT;
   int N;
-
   if (argc == 2) {
     N = std::stoi(argv[1]);
   } else {
@@ -105,13 +103,15 @@ int main(int argc, char **argv) {
   double s = function_a(u, v, N);
   double *x = function_b(u, v, N);
 
+  LIKWID_MARKER_INIT;
   LIKWID_MARKER_START("function_c");
   double *y = function_c(A, x, N);
   LIKWID_MARKER_STOP("function_c");
+  LIKWID_MARKER_CLOSE;  
 
   double *z = function_d(s, x, y, N);
 
-  print_results(s, x, y, z, A, N);
+  print_results(s, x, y, z, A, N); 
 
   delete[] u;
   delete[] v;
@@ -119,6 +119,5 @@ int main(int argc, char **argv) {
   delete[] x;
   delete[] y;
   delete[] z;
-  LIKWID_MARKER_CLOSE;
-  EXIT_SUCCESS;
+  EXIT_SUCCESS;  
 }
