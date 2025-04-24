@@ -3,9 +3,8 @@ Flat profile:
 Each sample counts as 0.01 seconds.
   %   cumulative   self              self     total           
  time   seconds   seconds    calls  Ts/call  Ts/call  name    
- 66.95      0.10     0.10                             function_c(double const*, double const*, int)
- 33.47      0.15     0.05                             print_results(double, double const*, double const*, double const*, double const*, int)
-  0.00      0.15     0.00        1     0.00     0.00  _GLOBAL__sub_I__Z10function_aPKdS0_i
+100.42      0.09     0.09                             function_c(double const*, double const*, int)
+  0.00      0.09     0.00        1     0.00     0.00  _GLOBAL__sub_I__Z10function_aPKdS0_i
 
  %         the percentage of the total running time of the
 time       program used by this function.
@@ -43,17 +42,14 @@ notice and this notice are preserved.
 		     Call graph (explanation follows)
 
 
-granularity: each sample hit covers 2 byte(s) for 6.64% of 0.15 seconds
+granularity: each sample hit covers 2 byte(s) for 11.06% of 0.09 seconds
 
 index % time    self  children    called     name
                                                  <spontaneous>
-[1]     66.7    0.10    0.00                 function_c(double const*, double const*, int) [1]
------------------------------------------------
-                                                 <spontaneous>
-[2]     33.3    0.05    0.00                 print_results(double, double const*, double const*, double const*, double const*, int) [2]
+[1]    100.0    0.09    0.00                 function_c(double const*, double const*, int) [1]
 -----------------------------------------------
                 0.00    0.00       1/1           __libc_csu_init [21]
-[10]     0.0    0.00    0.00       1         _GLOBAL__sub_I__Z10function_aPKdS0_i [10]
+[9]      0.0    0.00    0.00       1         _GLOBAL__sub_I__Z10function_aPKdS0_i [9]
 -----------------------------------------------
 
  This table describes the call tree of the program, and was sorted by
@@ -146,4 +142,4 @@ notice and this notice are preserved.
 
 Index by function name
 
-  [10] _GLOBAL__sub_I__Z10function_aPKdS0_i [1] function_c(double const*, double const*, int) [2] print_results(double, double const*, double const*, double const*, double const*, int)
+   [9] _GLOBAL__sub_I__Z10function_aPKdS0_i [1] function_c(double const*, double const*, int)
