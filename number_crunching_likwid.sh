@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -p shared
+#SBATCH -p test
 
 module purge
 module load gcc likwid
