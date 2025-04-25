@@ -5,28 +5,34 @@ CPU type:	AMD K17 (Zen2) architecture
 CPU clock:	2.00 GHz
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
-Group 1: FLOPS_DP
+Region function_c, Group 1: FLOPS_DP
++-------------------+------------+
+|    Region Info    | HWThread 0 |
++-------------------+------------+
+| RDTSC Runtime [s] |   0.094072 |
+|     call count    |          1 |
++-------------------+------------+
+
 +---------------------------+---------+------------+
-|           Event           | Counter | HWThread 4 |
+|           Event           | Counter | HWThread 0 |
 +---------------------------+---------+------------+
-|      ACTUAL_CPU_CLOCK     |  FIXC1  | 1179671677 |
-|       MAX_CPU_CLOCK       |  FIXC2  |  713602740 |
-|    RETIRED_INSTRUCTIONS   |   PMC0  |      -     |
-|    CPU_CLOCKS_UNHALTED    |   PMC1  |      -     |
-| RETIRED_SSE_AVX_FLOPS_ALL |   PMC2  |      -     |
-|           MERGE           |   PMC3  |      -     |
+|      ACTUAL_CPU_CLOCK     |  FIXC1  |  312583100 |
+|	MAX_CPU_CLOCK       |  FIXC2  |  188048500 |
+|    RETIRED_INSTRUCTIONS   |   PMC0  |  700114300 |
+|    CPU_CLOCKS_UNHALTED    |   PMC1  |  310729800 |
+| RETIRED_SSE_AVX_FLOPS_ALL |   PMC2  |  200000000 |
+|           MERGE           |   PMC3  |          0 |
 +---------------------------+---------+------------+
 
 +----------------------+------------+
-|        Metric        | HWThread 4 |
+|        Metric        | HWThread 0 |
 +----------------------+------------+
-|  Runtime (RDTSC) [s] |     0.3593 |
-| Runtime unhalted [s] |     0.5910 |
-|      Clock [MHz]     |  3299.7960 |
-|          CPI         |      -     |
-|     DP [MFLOP/s]     |          0 |
+|  Runtime (RDTSC) [s] |     0.0941 |
+| Runtime unhalted [s] |     0.1566 |
+|      Clock [MHz]     |  3318.2324 |
+|          CPI         |     0.4438 |
+|     DP [MFLOP/s]     |  2126.0406 |
 +----------------------+------------+
-
 
 
  memory performance:
@@ -36,26 +42,32 @@ CPU type:	AMD K17 (Zen2) architecture
 CPU clock:	2.00 GHz
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
-Group 1: MEM
+Region function_c, Group 1: MEM
++-------------------+------------+
+|    Region Info    | HWThread 0 |
++-------------------+------------+
+| RDTSC Runtime [s] |   0.093680 |
+|     call count    |          1 |
++-------------------+------------+
+
 +----------------------+---------+------------+
-|         Event        | Counter | HWThread 4 |
+|         Event        | Counter | HWThread 0 |
 +----------------------+---------+------------+
-|   ACTUAL_CPU_CLOCK   |  FIXC1  | 1184017031 |
-|     MAX_CPU_CLOCK    |  FIXC2  |  731822180 |
-| RETIRED_INSTRUCTIONS |   PMC0  |      -     |
-|  CPU_CLOCKS_UNHALTED |   PMC1  |      -     |
-|    DRAM_CHANNEL_0    |   DFC0  |   90299647 |
-|    DRAM_CHANNEL_1    |   DFC1  |   90318594 |
+|   ACTUAL_CPU_CLOCK   |  FIXC1  |  312647500 |
+|     MAX_CPU_CLOCK    |  FIXC2  |  187288100 |
+| RETIRED_INSTRUCTIONS |   PMC0  |  700113400 |
+|  CPU_CLOCKS_UNHALTED |   PMC1  |  310784600 |
+|    DRAM_CHANNEL_0    |   DFC0  |    6301496 |
+|    DRAM_CHANNEL_1    |   DFC1  |    6301509 |
 +----------------------+---------+------------+
 
 +-----------------------------+------------+
-|            Metric           | HWThread 4 |
+|            Metric           | HWThread 0 |
 +-----------------------------+------------+
-|     Runtime (RDTSC) [s]     |     0.3683 |
-|     Runtime unhalted [s]    |     0.5931 |
-|         Clock [MHz]         |  3229.7098 |
-|             CPI             |      -     |
-| Memory bandwidth [MBytes/s] | 31385.1145 |
-| Memory data volume [GBytes] |    11.5596 |
+|     Runtime (RDTSC) [s]     |     0.0937 |
+|     Runtime unhalted [s]    |     0.1566 |
+|         Clock [MHz]         |  3332.3975 |
+|             CPI             |     0.4439 |
+| Memory bandwidth [MBytes/s] |  8610.0922 |
+| Memory data volume [GBytes] |     0.8066 |
 +-----------------------------+------------+
-
