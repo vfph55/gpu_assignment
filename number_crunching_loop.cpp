@@ -3,7 +3,7 @@
 
 double function_a(const double *u, const double *v, const int N) {
   double s = 0;
-  #pragma omp parallel for reduction(+:s)
+  #pragma omp target parallel for reduction(+:s)
   for (unsigned int i = 0; i < N; i++) {
     s += u[i] * v[i];
   }
@@ -12,7 +12,7 @@ double function_a(const double *u, const double *v, const int N) {
 
 double *function_b(const double *u, const double *v, const int N) {
   double *x = new double[N];
-  #pragma omp parallel for
+  #pragma omp target parallel for
   for (unsigned int i = 0; i < N; i++) {
     x[i] = u[i] + v[i];
   }
@@ -21,11 +21,11 @@ double *function_b(const double *u, const double *v, const int N) {
 
 double *function_c(const double *A, const double *x, const int N) {
   double *y = new double[N];
-  #pragma omp parallel for
+  #pragma omp target parallel for
   for (unsigned int i = 0; i < N; i++) {
     y[i] = 0;
   }
-  #pragma omp parallel for
+  #pragma omp target parallel for
   for (unsigned int i = 0; i < N; i++) {
     for (unsigned int j = 0; j < N; j++) {
       y[i] += A[i * N + j] * x[i];
@@ -37,7 +37,7 @@ double *function_c(const double *A, const double *x, const int N) {
 double *function_d(const double s, const double *x, const double *y,
                    const int N) {
   double *z = new double[N];
-  #pragma omp parallel for
+  #pragma omp target parallel for
   for (unsigned int i = 0; i < N; i++) {
     if (i % 2 == 0) {
       z[i] = s * x[i] + y[i];
@@ -49,12 +49,12 @@ double *function_d(const double s, const double *x, const double *y,
 }
 
 void init_datastructures(double *u, double *v, double *A, const int N) {
-  #pragma omp parallel for
+  #pragma omp target parallel for
   for (unsigned int i = 0; i < N; i++) {
     u[i] = 1;
     v[i] = 1;
   }
-  #pragma omp parallel for
+  #pragma omp target parallel for
   for (unsigned int i = 0; i < N * N; i++) {
     A[i] = 1;
   }
