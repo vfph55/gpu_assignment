@@ -105,7 +105,7 @@ int main(int argc, char **argv) {
   double *v = new double[N];
   double *A = new double[N * N];
 
-//   init_datastructures(u, v, A, N);
+  init_datastructures(u, v, A, N);
 
 //   double s = function_a(u, v, N);
 //   double *x = function_b(u, v, N);
@@ -116,27 +116,23 @@ int main(int argc, char **argv) {
 
   #pragma omp parallel
   {
-    #pragma omp single nowait
+    #pragma omp single
     {
-        #pragma omp task shared(s)
-        {
-        s = function_a(u, v, N);
-        }
-        
-        #pragma omp task shared(x)
-        {
-        x = function_b(u, v, N);
-        }
-        
-        #pragma omp task shared(y) depend(in: x) depend(out: y)
-        {
-        y = function_c(A, x, N);
-        }
-        
-        #pragma omp task shared(z) depend(in: s, y) depend(out: z)
-        {
-        z = function_d(s, x, y, N);
-        }
+      #pragma omp task shared(s)
+      s = function_a(u, v, N);
+      
+      #pragma omp task shared(x)
+      x = function_b(u, v, N);
+      
+      #pragma omp taskwait
+      
+      #pragma omp task shared(y) depend(in: x)
+      y = function_c(A, x, N);
+      
+      #pragma omp task shared(z) depend(in: s, x, y)
+      z = function_d(s, x, y, N);
+      
+      #pragma omp taskwait
     }
   }
 
