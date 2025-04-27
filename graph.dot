@@ -1,0 +1,19 @@
+digraph taskgraph {
+    node [shape=rectangle, style=filled, color=lightyellow];
+    
+    init [label="init_datastructures()"];
+    fa [label="function_a(u,v)"];
+    fb [label="function_b(u,v)"];
+    fc [label="function_c(A,x)"];
+    fd [label="function_d(s,x,y)"];
+    print [label="print_results()"];
+    
+    init -> fa [label="u,v"];
+    init -> fb [label="u,v"];
+    init -> fc [label="A"];
+    fa -> fd [label="s"];
+    fb -> fc [label="x"];
+    fb -> fd [label="x"];
+    fc -> fd [label="y"];
+    fd -> print [label="z"];
+}
